@@ -1,10 +1,16 @@
 # netlify.toml
-[build]
-  command = "npm run build"  # Le script pour construire vos fonctions
-  functions = "lambda"       # Le répertoire où netlify-lambda va mettre les fonctions compilées
-  publish = "public"         # Si vous avez un dossier de fichiers statiques (optionnel)
 
+[build]
+  command = "echo 'Netlify build complete'" # Commande simple si pas de compilation JS/CSS
+  functions = "lambda"                     # Le répertoire où Netlify trouvera vos fonctions
+  publish = "public"                       # Le répertoire qui contient vos fichiers statiques (CSS, etc.)
+
+# 1. Redirige TOUS les quiz statiques (quizzhtml/...)
+# Notez que cela n'est plus nécessaire si vous utilisez le middleware Express statique 
+# DANS la fonction, mais c'est plus propre de séparer les fichiers statiques. 
+
+# 2. Redirige la page racine vers la fonction
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat" # Redirige toutes les requêtes /api/* vers votre fonction 'api'
-  status = 200 # Important : permet de réécrire l'URL au lieu de rediriger le client
+  from = "/"
+  to = "/.netlify/functions/index" # Redirige la racine vers la fonction 'index' dans le dossier 'lambda'
+  status = 200                     # Important : Réécrit l'URL (cache le .netlify/functions)
