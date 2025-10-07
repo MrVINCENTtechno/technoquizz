@@ -1,0 +1,10 @@
+# netlify.toml
+[build]
+  command = "npm run build"  # Le script pour construire vos fonctions
+  functions = "lambda"       # Le répertoire où netlify-lambda va mettre les fonctions compilées
+  publish = "public"         # Si vous avez un dossier de fichiers statiques (optionnel)
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat" # Redirige toutes les requêtes /api/* vers votre fonction 'api'
+  status = 200 # Important : permet de réécrire l'URL au lieu de rediriger le client
