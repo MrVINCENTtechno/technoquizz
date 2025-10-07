@@ -6,10 +6,10 @@
     "build": "netlify-lambda build functions",
     "start": "node server.js"
   },
-  
   "dependencies": {
     "@netlify/functions": "^4.2.7",
     "express": "^4.18.2",
-    "netlify-lambda": "^2.0.16"
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^4.0.0"
   }
 }
