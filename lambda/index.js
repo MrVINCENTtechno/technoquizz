@@ -7,10 +7,12 @@ const path = require('path');
 const app = express();
 
 // Configuration
-const ROOT_FOLDER = '../quizzhtml';
+const ROOT_FOLDER = 'quizzhtml';
 const ANNEE_SCOLAIRE = '2025-26';
 // NOTE IMPORTANTE: Le chemin de base doit être ajusté pour l'environnement Netlify Lambda
 // process.cwd() retourne le répertoire de base de la fonction Netlify.
+// 💡 TEST #1 : Pour le débugage, essayez de remonter d'un niveau si 'quizzhtml' est à la racine
+const DEPOSIT_ROOT = path.join(__dirname, '..'); 
 const BASE_PATH = path.join(process.cwd(), ROOT_FOLDER, ANNEE_SCOLAIRE);
 
 
